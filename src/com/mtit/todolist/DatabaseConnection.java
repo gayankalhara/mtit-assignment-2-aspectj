@@ -15,16 +15,12 @@ public class DatabaseConnection {
     
     public static void createDatabaseConnection() {
     	try {
-			try {
-				Class.forName("org.sqlite.JDBC");
-			} catch (ClassNotFoundException e) {
-				throw new RuntimeException("Database Connector not found!", e);
-			}
+			Class.forName("org.sqlite.JDBC");
 			dbConnection = DriverManager.getConnection(DATABASE);
+    	} catch (ClassNotFoundException e) {
+			throw new RuntimeException("Database Connector not found!", e);
     	} catch (SQLException e) {
-             throw new RuntimeException("Unexpected error occured while connecting to the database!", e);
-    	} catch (Exception e){
-    		throw new RuntimeException("An unexpected error occured!", e);
+            throw new RuntimeException("Unexpected error occured while connecting to the database!", e);
     	}
     }
     

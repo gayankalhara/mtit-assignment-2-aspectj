@@ -1,5 +1,5 @@
 package com.mtit.dataaccess;
 
-public class UserDataAccessImpl {
+public class UserDataAccessImpl implements UserDataAccess {
 
 }

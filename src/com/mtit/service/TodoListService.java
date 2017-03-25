@@ -1,5 +1,5 @@
 package com.mtit.service;
 
-public class TodoListService {
+public interface TodoListService {
 
 }
