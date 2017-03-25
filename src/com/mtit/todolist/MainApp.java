@@ -107,6 +107,7 @@ public class MainApp {
 		frame.getContentPane().add(btnExit);
 		
 		txtUserName = new JTextField();
+		txtUserName.setText("gayan");
 		txtUserName.setHorizontalAlignment(SwingConstants.CENTER);
 		txtUserName.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		txtUserName.setBounds(25, 56, 228, 35);

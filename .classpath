@@ -4,5 +4,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.ajdt.core.ASPECTJRT_CONTAINER"/>
 	<classpathentry kind="lib" path="D:/projects/mtit-assignment-2-aspectj/lib/sqlite-jdbc-3.16.1.jar"/>
+	<classpathentry kind="lib" path="D:/projects/mtit-assignment-2-aspectj/lib/jcalendar-1.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -4,7 +4,7 @@ public class ServiceManager {
 	private static TodoListService mTodoListService = null;
 	private static UserService  mUserService = null;
 	
-	public static TodoListService getMovieService() {
+	public static TodoListService getTodoListItemsService() {
 		if(mTodoListService == null) {
 			mTodoListService = new TodoListServiceImpl();
 		}

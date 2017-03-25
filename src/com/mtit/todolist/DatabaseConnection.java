@@ -9,7 +9,6 @@ public class DatabaseConnection {
 	private static Connection dbConnection = null;
 
     public static Connection openDatabaseConnection() {
-    	if(dbConnection == null) {
 	    	try {
 				Class.forName("org.sqlite.JDBC");
 				dbConnection = DriverManager.getConnection(DATABASE);
@@ -18,7 +17,6 @@ public class DatabaseConnection {
 	    	} catch (SQLException e) {
 	            throw new RuntimeException("Unexpected error occurred while connecting to the database!", e);
 	    	}
-    	} 
     	
     	return dbConnection;
 	}
