@@ -1,6 +1,7 @@
 package com.mtit.dataaccess;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -61,6 +62,60 @@ public class TodoListDataAccessImpl implements TodoListDataAccess {
 
 		return list;
 
+	}
+
+	@Override
+	public boolean insertTodoListItem(TodoListItem todoListItem) throws SQLException {
+		Connection connection = DatabaseConnection.openDatabaseConnection();
+		
+		PreparedStatement statement = connection.prepareStatement("INSERT INTO todolist VALUES (NULL, 1, ?, ?, ?, ?)");
+		statement.setString(1, todoListItem.getItemName());
+		statement.setInt(2, todoListItem.getPriority());
+		statement.setString(3, todoListItem.getDueDate());
+		statement.setString(4, todoListItem.getStatus());
+        
+        int result = statement.executeUpdate();
+        statement.close();
+        DatabaseConnection.closeDatabaseConnection();
+        
+        if(result == 1)
+        	return true;
+		
+		throw new SQLException();
+	}
+
+	@Override
+	public boolean updateTodoListItem(TodoListItem todoListItem) throws SQLException {
+Connection connection = DatabaseConnection.openDatabaseConnection();
+		
+		PreparedStatement statement = connection.prepareStatement("UPDATE todolist SET task_name=?, priority=?, due_date=?, status=? WHERE item_id=?");
+		statement.setString(1, todoListItem.getItemName());
+		statement.setInt(2, todoListItem.getPriority());
+		statement.setString(3, todoListItem.getDueDate());
+		statement.setString(4, todoListItem.getStatus());
+		statement.setInt(4, todoListItem.getId());
+        
+        int result = statement.executeUpdate();
+        statement.close();
+        DatabaseConnection.closeDatabaseConnection();
+        
+        if(result == 1)
+        	return true;
+        
+        throw new SQLException();
+	}
+
+	@Override
+	public boolean deleteTodoListItem(TodoListItem todoListItem) throws SQLException {
+		Connection connection = DatabaseConnection.openDatabaseConnection();
+		
+		Statement statement = connection.createStatement();
+		boolean result = statement.execute("DELETE FROM todolist WHERE id = " + todoListItem.getId());
+	
+        statement.close();
+        DatabaseConnection.closeDatabaseConnection();
+		
+        return result;
 	}
 
 }

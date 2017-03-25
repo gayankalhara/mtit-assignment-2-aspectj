@@ -38,4 +38,27 @@ public class TodoListServiceImpl implements TodoListService{
 		return null;
 	}
 
+	@Override
+	public boolean addTodoListItem(TodoListItem todoListItem) {
+		try {
+			return mTodoListDataAccess.insertTodoListItem(todoListItem);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+
+	@Override
+	public boolean deleteTodoListItem(TodoListItem todoListItem) {
+		try {
+			return mTodoListDataAccess.deleteTodoListItem(todoListItem);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+
 }
