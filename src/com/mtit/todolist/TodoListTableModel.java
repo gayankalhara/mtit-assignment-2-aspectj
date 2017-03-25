@@ -12,7 +12,7 @@ public class TodoListTableModel extends AbstractTableModel{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private String[] mColumnNames = {"Task Name", "Priority", "Due Date", "Status"};
+	private String[] mColumnNames = {"ID", "Task Name", "Priority", "Due Date", "Status"};
 	private List<TodoListItem> mTodoItems = null;
 	
 	public TodoListTableModel(List<TodoListItem> todoItems){
@@ -45,16 +45,19 @@ public class TodoListTableModel extends AbstractTableModel{
         TodoListItem item = mTodoItems.get(rowIndex);
         
         	switch (columnIndex) {
-            case 0:
-                value = item.getItemName();
+        	case 0:
+                value = item.getId();
                 break;
             case 1:
-            	value = item.getPriority();
+                value = item.getItemName();
                 break;
             case 2:
-            	value = item.getDueDate();
+            	value = item.getPriority();
                 break;
             case 3:
+            	value = item.getDueDate();
+                break;
+            case 4:
             	value = item.getStatus();
             	break;
         }
@@ -65,13 +68,15 @@ public class TodoListTableModel extends AbstractTableModel{
 	@Override
 	public Class<?> getColumnClass(int columnIndex){
 	          switch (columnIndex){
-	             case 0:
-	               return String.class;
-	             case 1:
+	          	case 0:
 	               return Integer.class;
-	             case 2:
+	             case 1:
 	               return String.class;
+	             case 2:
+	               return Integer.class;
 	             case 3:
+	               return String.class;
+	             case 4:
 		           return String.class;
 	             }
 	             return null;

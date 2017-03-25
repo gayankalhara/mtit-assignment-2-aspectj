@@ -110,7 +110,7 @@ Connection connection = DatabaseConnection.openDatabaseConnection();
 		Connection connection = DatabaseConnection.openDatabaseConnection();
 		
 		Statement statement = connection.createStatement();
-		boolean result = statement.execute("DELETE FROM todolist WHERE id = " + todoListItem.getId());
+		boolean result = statement.execute("DELETE FROM todolist WHERE item_id = " + todoListItem.getId());
 	
         statement.close();
         DatabaseConnection.closeDatabaseConnection();

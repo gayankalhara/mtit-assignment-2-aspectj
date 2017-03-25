@@ -99,6 +99,21 @@ public class TodoListManager extends JFrame {
 		contentPane.add(btnAdd);
 		
 		btnRemoveSelected_1 = new JButton("Remove Selected");
+		btnRemoveSelected_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int row = todoListTable.getSelectedRow();
+				TodoListTableModel tlModel = (TodoListTableModel) todoListTable.getModel();
+				int rowValue = Integer.parseInt(tlModel.getValueAt(row, 0).toString());
+				
+				TodoListItem todoListItem = ServiceManager.getTodoListItemsService().getTodoListItem(rowValue);
+				
+				if(todoListItem != null) {
+					ServiceManager.getTodoListItemsService().deleteTodoListItem(todoListItem);
+					((TodoListTableModel)todoListTable.getModel()).setData(ServiceManager.getTodoListItemsService().getTodoListItems());
+					((TodoListTableModel)todoListTable.getModel()).fireTableDataChanged();
+				}
+			}
+		});
 		btnRemoveSelected_1.setBounds(10, 508, 289, 43);
 		contentPane.add(btnRemoveSelected_1);
 		
